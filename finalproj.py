@@ -1,4 +1,3 @@
-"""Statistical Distribution Fitting Tool - Optimized Version"""
 import numpy as np
 import streamlit as st
 import pandas as pd
@@ -7,7 +6,6 @@ from scipy.stats import norm, uniform, expon, gamma, beta, lognorm, weibull_min,
 
 st.title("Statistical Distribution Fitting Tool")
 
-# Distribution mapping (defined once at module level for efficiency)
 DIST_MAP = {
     "Normal": norm,
     "Uniform": uniform,
@@ -49,7 +47,6 @@ with tab1:
             df = pd.read_csv(uploaded_file)
             st.dataframe(df.head(10))
 
-            # Simplify column selection
             col = st.selectbox("Select column", df.columns) if len(df.columns) > 1 else df.columns[0]
 
             st.session_state.data = df[col].dropna().values
@@ -201,7 +198,7 @@ with tab2:
         plt.tight_layout()
 
         st.pyplot(fig)
-        plt.close(fig)  # Explicitly close figure to free memory
+        plt.close(fig)  
 
         st.divider()
         st.header("Accuracy")
